@@ -1,3 +1,9 @@
+.pio/
+.vscode/
+*.py
+Pip*
+CMakeList*
+
 # Prerequisites
 *.d
 

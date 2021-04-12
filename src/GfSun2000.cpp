@@ -6,6 +6,7 @@ ModbusClientRTU* modbus;
 
 ModbusMessage* response;
 GfSun2000OnData onData;
+GfSun2000OnError onError;
 
 int8_t remoteNum = 1;
 bool done = true;
@@ -14,8 +15,10 @@ void handleError(Error error, uint32_t token) {
   // ModbusError wraps the error code and provides a readable error message for it
   done = true;
   response = nullptr;
-  ModbusError me(error);  
-  Serial.printf("Error response: %02X - %s\n", (int)me, (const char *)me);  
+  ModbusError me(error);    
+  if (onError) {
+      onError((int)me, (char*)(const char *)me);
+  }
 }
 
 int16_t reg2ix(int16_t regNumber) {
@@ -75,6 +78,10 @@ void GfSun2000::setup(HardwareSerial& serial, int8_t rtsPin, int8_t remoteNumber
 
 void GfSun2000::setDataHandler(GfSun2000OnData handler) {
     onData = handler;
+}
+
+void GfSun2000::setErrorHandler(GfSun2000OnError handler) {
+    onError = handler;
 }
 
 bool GfSun2000::readData() {

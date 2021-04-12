@@ -6,6 +6,9 @@
 
 GfSun2000 GF = GfSun2000();
 
+void errorHandler(int errorId, char* errorMessage) {
+  Serial.printf("Error response: %02X - %s\n", errorId, errorMessage);
+}
 
 void dataHandler(GfSun2000Data data) {
   Serial.println("\n\n");
@@ -29,6 +32,7 @@ void setup() {
   Serial.println("__ OK __");  
   GF.setup(Serial2);  
   GF.setDataHandler(dataHandler);
+  GF.setErrorHandler(errorHandler);
 }
 
 void loop() {

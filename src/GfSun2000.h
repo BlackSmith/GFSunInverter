@@ -29,12 +29,14 @@ struct GfSun2000Data {
 };
 
 typedef void (*GfSun2000OnData) (GfSun2000Data data);
+typedef void (*GfSun2000OnError) (int errorId, char* errorMessage);
 
 class GfSun2000 {
 public:        
     void setup(HardwareSerial& serial, int8_t rtsPin = -1, int8_t remoteNumber = 1);
     bool readData();
     void setDataHandler(GfSun2000OnData handler);      
+    void setErrorHandler(GfSun2000OnError handler);      
 };
 
 #endif

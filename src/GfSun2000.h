@@ -2,7 +2,7 @@
 #define GfSun2000_h
 #include <Arduino.h>
 #include <map>
-#include "ModbusClientRTU.h"
+#include <ModbusClientRTU.h>
 
 #define MODBUS_REGISTRY_FROM  0
 #define MODBUS_REGISTRY_TO    125
@@ -11,11 +11,12 @@
 
 
 #define REGISTRY_DEVICE_ID               3     // 10 chars; registers 3,4,5,6,7
-#define REGISTRY_AC_VOLTAGE             70     // 2 bytes
-#define REGISTRY_DC_VOLTAGE            109     // 2 bytes
-#define REGISTRY_AVERAGE_POWER          86     // 2 bytes
 #define REGISTRY_CUSTOM_ENERGY_COUNTER  60     // 2 bytes 
 #define REGISTRY_TOTAL_ENERGY_COUNTER   63     // 2 bytes 
+#define REGISTRY_AC_VOLTAGE             70     // 2 bytes
+#define REGISTRY_AVERAGE_POWER          86     // 2 bytes
+#define REGISTRY_DC_VOLTAGE            109     // 2 bytes
+
 
 
 struct GfSun2000Data {

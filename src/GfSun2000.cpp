@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "ModbusClientRTU.h"
+#include <ModbusClientRTU.h>
 #include "GfSun2000.h"
 
 ModbusClientRTU* modbus;

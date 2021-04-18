@@ -1,8 +1,12 @@
 .pio/
 .vscode/
+.env/
 *.py
 Pip*
 CMakeList*
+img/.*
+*.fz
+*xcf
 
 # Prerequisites
 *.d

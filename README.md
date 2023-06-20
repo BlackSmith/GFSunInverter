@@ -88,7 +88,7 @@ esphome:
 
   libraries:
     - https://github.com/eModbus/eModbus.git#v1.0-stable
-    - https://github.com/BlackSmith/GFSunInverter.git@v1.1.0
+    - https://github.com/BlackSmith/GFSunInverter.git
   includes:
     - GFSunInverter.h
 

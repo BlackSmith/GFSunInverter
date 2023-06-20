@@ -32,7 +32,7 @@ This is eaxample of integration with ESPHome.
 #include <GfSun2000.h>
 
 
-class GfSun2000Sensor : public PollingComponent, public Sensor {
+class GfSun2000Sensor : public PollingComponent, public Sensor, public GfSun2000Callback {
  public:
   GfSun2000 gf = GfSun2000();
   Sensor *ac_voltage = new Sensor();
@@ -42,6 +42,9 @@ class GfSun2000Sensor : public PollingComponent, public Sensor {
   // constructor
   GfSun2000Sensor() : PollingComponent(5000) {}
 
+  void errorHandler(int errorId, char* errorMessage) {
+      ESP_LOGD("ERROR", "Error response: %02X - %s\n", errorId, errorMessage);
+  }
 
   void dataHandler(GfSun2000Data data) {             
      ac_voltage->publish_state((long)data.ACVoltage);
@@ -50,18 +53,17 @@ class GfSun2000Sensor : public PollingComponent, public Sensor {
      energy->publish_state((long)data.totalEnergyCounter);
   }
 
-  void setHandler(GfSun2000OnData handler) {
-    gf.setDataHandler(handler);
-  }
 
   void setup() override {
     gf.setup(Serial2);
+    gf.setObjectHandler(this);
   }
 
   void update() override {
     gf.readData();    
   }
 };
+
 
 ```
 
@@ -86,7 +88,7 @@ esphome:
 
   libraries:
     - https://github.com/eModbus/eModbus.git#v1.0-stable
-    - https://github.com/BlackSmith/GFSunInverter.git#v1.1.0
+    - https://github.com/BlackSmith/GFSunInverter.git@v1.1.0
   includes:
     - GFSunInverter.h
 

@@ -1,7 +1,6 @@
 .pio/
 .vscode/
 .env/
-*.py
 Pip*
 CMakeList*
 img/.*

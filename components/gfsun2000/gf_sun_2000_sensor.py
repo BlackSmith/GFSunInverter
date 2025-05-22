@@ -3,7 +3,7 @@ from esphome import core
 from esphome.components import sensor
 
 
-GfSun2000 = cg.register_component("GfSun2000")
+GfSun2000Sensor = cg.register_component("GfSun2000Sensor")
 
 ac_voltage = sensor.sensor_schema("AC Voltage")
 dc_voltage = sensor.sensor_schema("DC Voltage")

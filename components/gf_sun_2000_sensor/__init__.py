@@ -5,8 +5,8 @@ from esphome.const import CONF_ID, UNIT_VOLT, UNIT_WATT, UNIT_KILOWATT_HOURS, IC
 
 gf_sun = GfSun2000()
 
-gfsun2000_ns = cg.esphome_ns.namespace("gfsun2000")
-GfSun2000Sensor = gfsun2000_ns.class_(
+gf_sun_2000_sensor_ns = cg.esphome_ns.namespace("gf_sun_2000_sensor")
+GfSun2000Sensor = gf_sun_2000_sensor_ns.class_(
     "GfSun2000Sensor", cg.PollingComponent
 )
 
@@ -19,7 +19,7 @@ CONF_SENSOR5 = "Cumulative Energy"
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(): cv.declare_id(GfSun2000Sensor),
+        cv.GenerateID(): cv.declare_id(GfSunSensor2000),
         cv.Optional(CONF_SERIAL_PORT): cv.use_id(sensor.Sensor),
         cv.Optional(CONF_SENSOR1): sensor.sensor_schema(
             unit_of_measurement=UNIT_VOLT, icon=ICON_EMPTY, accuracy_decimals=1

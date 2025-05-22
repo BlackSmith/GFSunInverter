@@ -1,1 +1,0 @@
-from .gf_sun_2000_sensor import GfSun2000SensorComponent

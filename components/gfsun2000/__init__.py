@@ -5,7 +5,7 @@ from esphome.const import CONF_ID, UNIT_VOLT, UNIT_WATT, UNIT_KILOWATT_HOURS, IC
 
 gf_sun = GfSun2000()
 
-gfsun2000_ns = cg.esphome_ns.namespace("gfsun2000_sensor")
+gfsun2000_ns = cg.esphome_ns.namespace("gfsun2000")
 GfSun2000Sensor = gfsun2000_ns.class_(
     "GfSun2000Sensor", cg.PollingComponent
 )

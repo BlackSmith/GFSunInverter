@@ -1,1 +1,1 @@
-from .gfsun2000 import GfSun2000SensorComponent
+from .sensor import GfSun2000SensorComponent

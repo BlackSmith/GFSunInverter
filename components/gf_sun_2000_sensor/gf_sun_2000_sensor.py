@@ -45,7 +45,8 @@ async def to_code(config):
 
     serial_port = config[CONF_SERIAL_PORT] 
     var.setup(serial_port)
-
+    gf_sun.readData()
+    
     # Přidání senzorů
     if CONF_SENSOR1 in config:
         sensor1 = var.get_sensor(config[CONF_SENSOR1])

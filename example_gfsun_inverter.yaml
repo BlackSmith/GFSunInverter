@@ -1,0 +1,37 @@
+substitutions:
+  reset_pin: GPIO15
+
+external_components:
+  - source:
+      type: local
+      path: components
+
+
+esphome:
+  name: gfsun_inverter_example
+  comment: "Example configuration for GFSun Inverter with ESPHome"
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+
+uart:
+  tx_pin: TX
+  rx_pin: RX
+  baud_rate: 9600
+
+modbus:
+  id: modbus_inverter
+
+
+sensor:
+  - platform: gfsun_inverter
+    reset_pin: ${reset_pin}
+    update_interval: 10s
+
+    voltage:
+      name: 'Voltage'
+    total_energy:
+      name: 'Total_Energy'
